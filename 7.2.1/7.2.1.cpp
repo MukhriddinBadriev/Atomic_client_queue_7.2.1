@@ -22,9 +22,10 @@ void Client() {
     
     while (n != 10) {
         n.operator++();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
         consol_color::SetColor(12, 0);
         std::cout << n.load() << " ";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        
     }
 }
 
@@ -32,9 +33,10 @@ void Teller() {
 
     while (n != 0) {
         n.operator--();
-        std::this_thread::sleep_for(std::chrono::seconds(2));
         consol_color::SetColor(10, 0);
         std::cout << n.load() << " ";
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        
     }
 }
 
