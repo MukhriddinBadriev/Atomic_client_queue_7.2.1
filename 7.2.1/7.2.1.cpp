@@ -18,9 +18,9 @@ public:
 
 std::atomic<int> n = 1;
 
-void Client() {
+void Client(int count) {
     
-    while (n != 10) {
+    while (n != count) {
         n.operator++();
         consol_color::SetColor(12, 0);
         std::cout << n.load() << " ";
@@ -43,7 +43,10 @@ void Teller() {
 
 int main()
 {
-    std::thread t1(Client);
+    int count = 0;
+    std::cout << "Enter max number client: ";
+    std::cin >> count;
+    std::thread t1(Client,count);
 
     std::thread t2(Teller);
 
